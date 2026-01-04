@@ -73,6 +73,23 @@ A feature-rich terminal-based ping monitor with real-time statistics, visual his
 ```bash
 pingmon [warn_ms] [crit_ms] [target]
 
+### Dependencies
+
+`pingmon` relies on a few system utilities to provide its full functionality. Make sure the following tools are installed on your Linux system, especially if you are running on a Raspberry Pi:
+
+- **ping**  
+  Required to send ICMP packets to monitor network latency.  
+  On some systems, normal users may need additional permissions to send ICMP packets. On Raspberry Pi OS, `ping` is usually installed by default.
+
+- **curl** or **wget**  
+  Used to fetch your public IP address, ISP, and location information. Either one must be installed.  
+  Installation examples on Raspberry Pi OS / Debian-based systems:  
+  ```bash
+  sudo apt update
+  sudo apt install curl
+  # or
+  sudo apt install wget
+
 ## 🙏 Acknowledgments
 
 - Inspired by various network monitoring tools
