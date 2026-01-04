@@ -20,6 +20,7 @@ pingmon
 # OS files
 .DS_Store
 Thumbs.db
+*.bak
 
 # Build directories
 build/
