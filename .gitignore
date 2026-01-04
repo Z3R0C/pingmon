@@ -1,0 +1,30 @@
+# Compiled files
+pingmon
+*.o
+*.so
+*.a
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build directories
+build/
+dist/
+
+# Test outputs
+test-output.txt
+valgrind-out.txt
