@@ -49,9 +49,9 @@ For commercial licensing inquiries, please contact: flyingzeroc@gmail.com
 ### 🎮 **Interactive Controls**
 | Key | Action | Description |
 |-----|--------|-------------|
-| `q` | Quit | Clean exit with terminal restoration |
-| `r` | Reset | Clear all statistics and history |
-| `m` | MyIP | Toggle public IP information display |
+| `\033[1;31mq\033[0m` | Quit | \033[1;37mClean exit with terminal restoration\033[0m |
+| `\033[1;33mr\033[0m` | Reset | \033[1;37mClear all statistics and history\033[0m |
+| `\033[1;34mm\033[0m` | MyIP | \033[1;37mToggle public IP information display\033[0m |
 
 ### 🌐 **Network Intelligence**
 - **Public IPv4 detection** with multiple fallback sources
@@ -69,13 +69,13 @@ For commercial licensing inquiries, please contact: flyingzeroc@gmail.com
 ### 📊 **Displayed Metrics**
 | Metric | Description | Format |
 |--------|-------------|--------|
-| **Last** | Most recent ping latency | `45.2 ms` |
-| **Avg** | Mean latency over session | `32.1 ms` |
-| **Loss** | Packet loss percentage | `0.00 %` |
-| **Status** | Connection state | `OK` / `TIMEOUT` |
-| **Sent/Recv** | Packet counters | `15/15` |
-| **Quality** | Latency-based score | `▮▮▮▮▮▮▮▮▮▮` (bar) |
-| **Stability** | Loss-based score | `95%` |
+| **Last** | Most recent ping latency | `\033[1;32m45.2 ms\033[0m` |
+| **Avg** | Mean latency over session | `\033[1;32m32.1 ms\033[0m` |
+| **Loss** | Packet loss percentage | `\033[1;33m0.00 %\033[0m` |
+| **Status** | Connection state | `\033[1;32mOK\033[0m` / `\033[1;31mTIMEOUT\033[0m` |
+| **Sent/Recv** | Packet counters | `\033[1;37m15/15\033[0m` |
+| **Quality** | Latency-based score | `\033[1;32m▮▮▮▮▮▮▮▮▮▮\033[0m` (bar) |
+| **Stability** | Loss-based score | `\033[1;32m95%\033[0m` |
 
 ## 🚀 Quick Start
 
@@ -83,7 +83,7 @@ For commercial licensing inquiries, please contact: flyingzeroc@gmail.com
 ```bash
 # Debian/Ubuntu/Raspberry Pi OS
 sudo apt update
-sudo apt install gcc curl
+sudo apt install gcc curl wget
 
 # RHEL/CentOS/Fedora
-sudo yum install gcc curl
+sudo yum install gcc curl wget
