@@ -28,3 +28,7 @@ dist/
 # Test outputs
 test-output.txt
 valgrind-out.txt
+
+# Temporäre Screenshots
+*.png
+!screenshots/*.png
