@@ -1,101 +1,89 @@
 For commercial licensing inquiries, please contact: flyingzeroc@gmail.com
 
-# pingmon - Advanced Ping Monitor
+<div align="center">
 
-![Terminal Screenshot](https://img.shields.io/badge/Platform-Linux-blue)
-![License](https://img.shields.io/badge/License-Modified%20MIT-green)
-![Version](https://img.shields.io/badge/Version-0.39-orange)
+# 🚀 pingmon - Advanced Ping Monitor
 
-A feature-rich terminal-based ping monitor with real-time statistics, visual history graphs, and network quality analysis.
+![Terminal Screenshot](https://img.shields.io/badge/Platform-Linux-blue?style=for-the-badge)
+![License](https://img.shields.io/badge/License-Modified_MIT-green?style=for-the-badge)
+![Version](https://img.shields.io/badge/Version-0.39-orange?style=for-the-badge)
+![Language](https://img.shields.io/badge/Language-C-00599C?style=for-the-badge&logo=c)
+![Status](https://img.shields.io/badge/Status-Production_Ready-success?style=for-the-badge)
+
+*A feature-rich terminal-based ping monitor with real-time statistics, visual history graphs, and network quality analysis*
+
+[✨ Features](#-features) • [📸 Screenshots](#-screenshots) • [🚀 Quick Start](#-quick-start) • [📖 Usage](#-usage) • [🛡️ Security](#️-security) • [📄 License](#-license)
+
+</div>
 
 ## 📸 Screenshots
 
-### Normal Operation
-![Normal Operation](screenshots/screenshot-normal.png)
+<div align="center">
 
-### With MyIP Information
-![MyIP Information](screenshots/screenshot-myip.png)
+| Normal Operation | MyIP Information |
+|:---:|:---:|
+| ![Normal Operation](screenshots/screenshot-normal.png) | ![MyIP Information](screenshots/screenshot-myip.png) |
+| *Real-time monitoring with color-coded metrics* | *Public IP, ISP, and location details* |
 
-### Poor Connection Detection
-![Poor Connection](screenshots/screenshot-bad.png)
+| Poor Connection | History Visualization |
+|:---:|:---:|
+| ![Poor Connection](screenshots/screenshot-bad.png) | ![History Graph](screenshots/screenshot-history.png) |
+| *Automatic warning/critical thresholds* | *Visual trend analysis over time* |
 
-### History Visualization
-![History Graph](screenshots/screenshot-history.png)
+</div>
 
-## 🚀 Features
+## ✨ Features
 
-### Core Functionality
-- **Real-time ICMP latency monitoring** using the system `ping` command.
-- **Live terminal UI** with ANSI colors and cursor control.
-- **Configurable WARN and CRIT thresholds** for latency visualization.
-- **Custom ping target** (IPv4 validated, safe fallback to 8.8.8.8).
+### 📊 **Real-time Monitoring**
+- **Live ICMP latency tracking** with system `ping` integration
+- **Configurable WARN/CRIT thresholds** (30ms/60ms default)
+- **Dynamic progress bars** for quality & stability assessment
+- **Color-coded metrics** for instant visual feedback
 
-### Visual Monitoring
-- **Latency history graph** (sliding window, color-coded by WARN/CRIT).
-- **Quality indicator** derived from the last latency measurement.
-- **Stability indicator** based on packet loss percentage.
-- **Dynamic progress bars** for quality and stability.
-- **Color-coded metrics** for quick visual assessment.
+### 📈 **Advanced Visualization**
+- **Sliding history graph** (40-point window, color-coded)
+- **Quality scoring** based on latency measurements
+- **Stability scoring** derived from packet loss percentage
+- **Professional terminal UI** with ANSI escape codes
 
-### Metrics Displayed
-- Last latency (ms)
-- Average latency (ms)
-- Packet loss (%)
-- Sent / received packet counters
-- Connection status (OK / TIMEOUT)
+### 🎮 **Interactive Controls**
+| Key | Action | Description |
+|-----|--------|-------------|
+| `q` | Quit | Clean exit with terminal restoration |
+| `r` | Reset | Clear all statistics and history |
+| `m` | MyIP | Toggle public IP information display |
 
-### Interactive Controls
-- `q` – Quit cleanly and restore terminal.
-- `r` – Reset statistics and history.
-- `m` – Toggle public IP information display.
+### 🌐 **Network Intelligence**
+- **Public IPv4 detection** with multiple fallback sources
+- **ISP/Organization lookup** via ipinfo.io
+- **Geolocation** (country-level, privacy-conscious)
+- **Secure fetching** (no shell execution, safe `execvp` calls)
 
-### Public IP Information (Optional)
-- Detects **public IPv4 address**.
-- Displays **ISP / organization name**.
-- Displays **country/location**.
-- Data fetched securely via `curl` / `wget` using `execvp` (no shell execution).
-- Queries are cached and fetched only once per session.
+### 🛡️ **Security & Reliability**
+- **No shell injection vectors** (zero `system()` or `popen()` calls)
+- **Comprehensive signal handling** (SIGINT, SIGTERM, SIGSEGV, SIGPIPE, SIGABRT)
+- **Graceful crash recovery** with terminal state preservation
+- **IPv4 validation** with safe fallback to 8.8.8.8
+- **Non-blocking I/O** for responsive user experience
 
-### Safety and Robustness
-- **No shell execution** (`execvp` only, no `system()` or `popen()`).
-- **Graceful signal handling** (SIGINT, SIGTERM, SIGSEGV, SIGPIPE, SIGABRT).
-- **Clean terminal restoration** on exit or crash.
-- **Non-blocking I/O** for ping output and keyboard input.
-- **Timeout detection** when ping responses stop arriving.
+### 📊 **Displayed Metrics**
+| Metric | Description | Format |
+|--------|-------------|--------|
+| **Last** | Most recent ping latency | `45.2 ms` |
+| **Avg** | Mean latency over session | `32.1 ms` |
+| **Loss** | Packet loss percentage | `0.00 %` |
+| **Status** | Connection state | `OK` / `TIMEOUT` |
+| **Sent/Recv** | Packet counters | `15/15` |
+| **Quality** | Latency-based score | `▮▮▮▮▮▮▮▮▮▮` (bar) |
+| **Stability** | Loss-based score | `95%` |
 
-### Performance & Design
-- Written in **pure C**, no external libraries required.
-- Minimal resource usage.
-- Designed for **long-running terminal sessions**.
-- Works on standard Linux environments.
+## 🚀 Quick Start
 
-### Command-line Usage
+### Prerequisites
 ```bash
-pingmon [warn_ms] [crit_ms] [target]
+# Debian/Ubuntu/Raspberry Pi OS
+sudo apt update
+sudo apt install gcc curl
 
-### Dependencies
-
-`pingmon` relies on a few system utilities to provide its full functionality. Make sure the following tools are installed on your Linux system, especially if you are running on a Raspberry Pi:
-
-- **ping**  
-  Required to send ICMP packets to monitor network latency.  
-  On some systems, normal users may need additional permissions to send ICMP packets. On Raspberry Pi OS, `ping` is usually installed by default.
-
-- **curl** or **wget**  
-  Used to fetch your public IP address, ISP, and location information. Either one must be installed.  
-  Installation examples on Raspberry Pi OS / Debian-based systems:  
-  ```bash
-  sudo apt update
-  sudo apt install curl
-  # or
-  sudo apt install wget
-
-## 🙏 Acknowledgments
-
-- Inspired by various network monitoring tools
-- Thanks to the open source community
-- ANSI color codes from various terminal standards
-
----
-
-Made with ❤️ by zeroc | 2026
+# RHEL/CentOS/Fedora
+sudo yum install gcc curl
